@@ -14,7 +14,8 @@ class Board extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(null),
+      turn: 'X'
     }
   }
 
@@ -29,12 +30,19 @@ class Board extends React.Component {
 
   handleClick (i) {
     const squares = this.state.squares.slice()
-    squares[i] = 'X'
-    this.setState({squares: squares})
+    squares[i] = this.state.turn
+    this.setState({
+      squares: squares,
+      turn: this.getNextTurn()
+    })
+  }
+
+  getNextTurn () {
+    return this.state.turn === 'X' ? 'O' : 'X'
   }
 
   render () {
-    const status = 'Next player: X'
+    const status = `Next player: ${this.state.turn}`
 
     return (
       <div>
