@@ -48,3 +48,8 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.game-info button.current {
+  background-color: #cd5c5c;
+  color: #fff;
+}
